@@ -1,0 +1,25 @@
+#!/usr/bin/python3
+mport sys
+
+def factorize(n):
+    """Factorize a number into the product of two smaller numbers."""
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            return (i, n // i)
+    return (n, 1)
+
+def main():
+    with open(sys.argv[1], 'r') as f:
+        for line in f:
+            n = int(line)
+            p, q = factorize(n)
+            print(f"{n}={p}*{q}")
+
+if __name__ == '__main__':
+    main()
+
+"""
+To use this solution, save the code to a file called factors.py and then run it from the command line with python factors.py <file>, where <file> is the name of the input file containing the numbers to be factorized.
+
+This solution works by iterating over all possible factors of the number and checking if any of them divides the number evenly. If a factor is found, it is returned along with the corresponding other factor, which is n // factor. If no factor is found
+"""
